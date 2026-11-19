@@ -1,0 +1,38 @@
+.birthday-page {
+  background:
+    radial-gradient(circle at 15% 13%, rgba(150, 48, 84, .32), transparent 34rem),
+    radial-gradient(circle at 88% 36%, rgba(208, 97, 120, .14), transparent 38rem),
+    linear-gradient(140deg, #180c12, #281019 52%, #120a10);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.birthday-serif { font-family: Georgia, "Times New Roman", serif; letter-spacing: -.035em; }
+.birthday-header { position: relative; z-index: 2; }
+.birthday-primary { background: linear-gradient(120deg, #ffe3e7 0%, #f7aec5 95%); box-shadow: 0 12px 40px rgba(248, 152, 176, .16); }
+.birthday-glow { position: absolute; width: 68vw; max-width: 520px; aspect-ratio: 1; border-radius: 999px; background: rgba(235, 111, 151, .16); filter: blur(90px); }
+.birthday-float { position: absolute; color: #f4b1c5; font-size: 3rem; animation: birthday-drift 6s ease-in-out infinite; opacity: .7; }
+.birthday-float-a { left: 6%; top: 15%; }
+.birthday-float-b { right: 7%; top: 18%; animation-delay: 1.8s; }
+.birthday-float-c { right: 17%; bottom: 9%; animation-delay: 3s; }
+.birthday-heart { animation: birthday-beat 2.8s ease-in-out infinite; }
+.birthday-reveal { animation: birthday-enter .8s ease-out both; }
+.birthday-open-hero { background: radial-gradient(ellipse at 50% 40%, rgba(214, 89, 125, .18), transparent 55%); }
+.birthday-memory { background: rgba(255, 220, 229, .045); box-shadow: 0 14px 38px rgba(0,0,0,.13); }
+.birthday-note { background: linear-gradient(145deg, rgba(255, 191, 208, .1), rgba(255, 191, 208, .025)); }
+.birthday-letter { background: #f8e9e6; background-image: linear-gradient(145deg, rgba(255,255,255,.6), transparent 55%); }
+.birthday-confetti { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.birthday-confetti-item { position: absolute; top: -30px; color: #ffc3d1; animation: birthday-fall 8s linear infinite; opacity: .6; }
+.birthday-confetti-0 { left: 8%; animation-delay: 0s; }
+.birthday-confetti-1 { left: 20%; animation-delay: 2s; }
+.birthday-confetti-2 { left: 38%; animation-delay: 5s; }
+.birthday-confetti-3 { left: 52%; animation-delay: 1s; }
+.birthday-confetti-4 { left: 66%; animation-delay: 4s; }
+.birthday-confetti-5 { left: 82%; animation-delay: 6s; }
+.birthday-confetti-6 { left: 93%; animation-delay: 3s; }
+@keyframes birthday-drift { 50% { transform: translateY(-18px) rotate(8deg); } }
+@keyframes birthday-beat { 50% { transform: scale(1.08); } }
+@keyframes birthday-enter { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes birthday-fall { from { transform: translateY(-40px) rotate(0deg); } to { transform: translateY(95vh) rotate(260deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .birthday-float, .birthday-heart, .birthday-reveal, .birthday-confetti-item { animation: none !important; }
+  .birthday-confetti-item { display: none; }
+}
