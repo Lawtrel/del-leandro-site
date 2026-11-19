@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { timelinePhotos } from "@/data/timeline-photos";
+import BirthdayMusic from "@/components/BirthdayMusic";
 
 const memories = [
   { photoId: "primeiro-encontro-cafeteria", date: "04 JUL · 2026", label: "Primeiro capítulo", title: "Tudo começou com um café.", text: "Aquele primeiro encontro no Felicità Café. Ainda gosto de pensar em quantas histórias cabiam naquele começo." },
@@ -170,6 +171,7 @@ export default function BirthdaySurprise() {
           </section>
 
           <footer className="bd-footer"><span>Del & Leandro</span><span>Uma lembrança feita para 22.11.2026</span></footer>
+          <BirthdayMusic />
         </div>
       )}
     </main>
