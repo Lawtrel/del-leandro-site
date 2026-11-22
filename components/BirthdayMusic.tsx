@@ -50,7 +50,6 @@ export default function BirthdayMusic() {
           type="button"
           className="bd-music-trigger"
           aria-expanded={false}
-          aria-controls="bd-music-player"
           onClick={() => setIsOpen(true)}
           aria-label="Ouvir nossa música: Planos, BK' e Luccas Carlos"
         >
