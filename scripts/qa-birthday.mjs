@@ -22,18 +22,37 @@ try {
 
     const portalOverflow = await page.evaluate(() => document.documentElement.scrollWidth > window.innerWidth + 1);
     if (portalOverflow) throw new Error("Horizontal overflow in portal at " + width);
+    if (await page.locator(".bd-portal-object").count() !== 1) throw new Error("Original illustrated door missing");
+    if (!await page.getByText("Tem um presente para você.").isVisible()) throw new Error("Original greeting missing");
 
     await page.getByRole("button", { name: /Entrar no nosso mundo mágico/ }).click();
     await page.getByRole("heading", { name: /Hoje o mundo celebra/ }).waitFor();
     if (await page.locator(".bd-memory-media img").count() !== 4) throw new Error("Expected all four original memories");
     if (await page.locator(".bd-note").count() !== 4) throw new Error("Expected all four original notes");
+    if (await page.locator(".bd-landscape-garden").count() !== 1) throw new Error("Night-garden illustration missing");
+    if (!await page.getByText("Meu bem, hoje eu queria te dar algo que tivesse um pouquinho de nós dois.").isVisible()) {
+      throw new Error("Original birthday letter missing");
+    }
+    for (const photo of await page.locator(".bd-memory-media img").all()) {
+      await photo.scrollIntoViewIfNeeded();
+      await page.waitForFunction((source) => {
+        const element = [...document.querySelectorAll(".bd-memory-media img")].find((img) => img.getAttribute("src") === source);
+        return element instanceof HTMLImageElement && element.complete && element.naturalWidth > 0;
+      }, await photo.getAttribute("src"));
+    }
 
     const note = page.locator(".bd-note").first();
     await note.click();
     if (await note.getAttribute("aria-expanded") !== "true") throw new Error("Note did not expand");
     await note.click();
     if (await note.getAttribute("aria-expanded") !== "false") throw new Error("Note did not collapse");
+    await note.focus();
+    await page.keyboard.press("Enter");
+    if (await note.getAttribute("aria-expanded") !== "true") throw new Error("Keyboard Enter did not expand note");
+    await page.keyboard.press("Space");
+    if (await note.getAttribute("aria-expanded") !== "false") throw new Error("Keyboard Space did not close note");
 
+    if (await page.locator(".bd-music-card iframe").count() !== 0) throw new Error("Audio should not load before user activation");
     await page.getByRole("button", { name: /Ouvir nossa música/ }).click();
     if (await page.locator(".bd-music-card iframe").count() !== 1) throw new Error("YouTube iframe missing");
     const src = await page.locator(".bd-music-card iframe").getAttribute("src");

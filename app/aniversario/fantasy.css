@@ -174,7 +174,8 @@
 .bd-portal-copy { position:relative; width:100%; max-width: 720px; padding: 1.8rem 0 2rem; }
 .bd-eyebrow { display:flex; align-items:center; gap:.75rem; color:#e4cf9a; font-size:.64rem; letter-spacing:.19em; font-weight:800; margin:0 0 1.4rem; }
 .bd-eyebrow-line { width:25px; height:1px; background:#c7b27a; }
-.bd-portal-prologue { color:#e9c5dd; font: italic 1.13rem var(--font-story); margin:0 0 .65rem; }
+.bd-portal-prologue { color:#e9c5dd; font: italic 1.13rem var(--font-story); margin:0 0 .4rem; }
+.bd-portal-giftline { margin:0 0 1rem; color:#e1c78c; letter-spacing:.15em; font-size:.68rem; font-weight:800; text-transform:uppercase; }
 .bd-portal-title {
   margin:0; font-size:clamp(3.3rem,6vw,6.4rem); line-height:1.02; text-wrap:balance;
   color:#fff7ee; text-shadow: 0 8px 26px rgba(5,6,18,.28);

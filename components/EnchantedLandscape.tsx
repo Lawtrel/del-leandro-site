@@ -7,15 +7,15 @@ export default function EnchantedLandscape({ variant = "garden" }: EnchantedLand
   return (
     <svg className={"bd-landscape bd-landscape-" + variant} viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
       <defs>
-        <linearGradient id="bd-skyline-fog" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id={"bd-skyline-fog-" + variant} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#7786c2" stopOpacity=".12"/>
           <stop offset="1" stopColor="#8994c3" stopOpacity="0"/>
         </linearGradient>
-        <linearGradient id="bd-hill-front" x1="0" y1="0" x2="0" y2="1">
+        <linearGradient id={"bd-hill-front-" + variant} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#23345b"/>
           <stop offset="1" stopColor="#0b152b"/>
         </linearGradient>
-        <radialGradient id="bd-lantern-light">
+        <radialGradient id={"bd-lantern-light-" + variant}>
           <stop offset="0" stopColor="#e7ce85" stopOpacity=".68"/>
           <stop offset="1" stopColor="#e7ce85" stopOpacity="0"/>
         </radialGradient>
@@ -30,7 +30,7 @@ export default function EnchantedLandscape({ variant = "garden" }: EnchantedLand
       </g>
       <path d="M0 398 Q160 290 338 357 T650 337 Q830 280 1038 340 T1440 312 V600 H0Z" fill="#1c2b51"/>
       <path d="M0 433 Q206 372 392 422 Q554 370 749 413 Q1000 338 1188 404 Q1318 381 1440 416 V600 H0Z" fill="#192746"/>
-      <ellipse cx="750" cy="412" rx="480" ry="85" fill="url(#bd-skyline-fog)"/>
+      <ellipse cx="750" cy="412" rx="480" ry="85" fill={"url(#bd-skyline-fog-" + variant + ")"}/>
       {/* The crooked little cottage is original and intentionally does not reproduce a film location. */}
       <g transform="translate(925 184)" className="bd-cottage">
         <path d="M64 165 L64 82 L136 22 L214 79 L214 164Z" fill="#161d37" stroke="#52618a" strokeWidth="3"/>
@@ -52,7 +52,7 @@ export default function EnchantedLandscape({ variant = "garden" }: EnchantedLand
         <path d="M1378 526 Q1321 398 1372 275 Q1420 187 1376 125 M1356 355 Q1302 305 1264 251 Q1235 203 1205 189 M1372 281 Q1410 264 1438 209" stroke="#0e182f" strokeWidth="29"/>
         <path d="M1366 270 Q1285 211 1267 130 M1380 223 Q1420 180 1436 133" stroke="#17213d" strokeWidth="13"/>
       </g>
-      <path d="M0 497 Q206 432 426 498 Q624 445 799 482 Q978 455 1121 493 Q1326 443 1440 490 V600 H0Z" fill="url(#bd-hill-front)"/>
+      <path d="M0 497 Q206 432 426 498 Q624 445 799 482 Q978 455 1121 493 Q1326 443 1440 490 V600 H0Z" fill={"url(#bd-hill-front-" + variant + ")"}/>
       <path d="M0 556 Q270 493 537 550 Q698 502 867 546 Q1133 483 1440 543 V600 H0Z" fill="#0b172c"/>
       <path d="M690 600 Q727 548 771 521 Q801 504 837 480 Q863 465 879 450" stroke="#c8b07e" strokeWidth="14" opacity=".17" fill="none"/>
       <path d="M690 600 Q727 548 771 521 Q801 504 837 480 Q863 465 879 450" stroke="#dbc794" strokeWidth="2" opacity=".24" fill="none" strokeDasharray="3 18"/>
@@ -69,9 +69,9 @@ export default function EnchantedLandscape({ variant = "garden" }: EnchantedLand
         <circle cx="1333" cy="540" r="4"/><circle cx="1387" cy="544" r="5"/>
       </g>
       <g opacity=".6">
-        <circle cx="335" cy="391" r="60" fill="url(#bd-lantern-light)"/>
+        <circle cx="335" cy="391" r="60" fill={"url(#bd-lantern-light-" + variant + ")"}/>
         <circle cx="335" cy="391" r="3.5" fill="#f0d28c"/>
-        <circle cx="1197" cy="402" r="54" fill="url(#bd-lantern-light)"/>
+        <circle cx="1197" cy="402" r="54" fill={"url(#bd-lantern-light-" + variant + ")"}/>
         <circle cx="1197" cy="402" r="3" fill="#f0d28c"/>
       </g>
     </svg>

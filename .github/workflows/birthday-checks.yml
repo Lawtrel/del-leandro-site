@@ -37,3 +37,11 @@ jobs:
             sleep 2
           done
           node scripts/qa-birthday.mjs
+      - name: Attach responsive screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: birthday-responsive-screenshots
+          path: /tmp/birthday-qa-screenshots/
+          if-no-files-found: warn
+          retention-days: 1

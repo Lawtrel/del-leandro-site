@@ -61,13 +61,14 @@ export default function BirthdaySurprise() {
                 <span className="bd-door-stitch" />
                 <span className="bd-door-emblem">D <span>♡</span> L</span>
                 <span className="bd-door-knob" />
-                <span className="bd-door-plaque">22 · NOV</span>
+                <span className="bd-door-plaque">PARABÉNS, DEL!</span>
               </div>
               <span className="bd-door-ground">✿ &nbsp; ✧ &nbsp; ✿</span>
             </div>
             <div className="bd-portal-copy">
               <p className="bd-eyebrow"><span className="bd-eyebrow-line" /> ERA UMA VEZ, UM DIA ESPECIAL <span className="bd-eyebrow-line" /></p>
               <p className="bd-portal-prologue">Uma porta secreta se abriu no dia do seu aniversário...</p>
+              <p className="bd-portal-giftline">Tem um presente para você.</p>
               <h1 id="bd-gift-title" className="bd-display bd-portal-title">Feliz aniversário, <em>minha pretinha ❤️</em></h1>
               <p className="bd-portal-description">Preparei um pequeno mundo só nosso, cheio de lembranças, carinho e coisas que eu queria te dizer.</p>
               <p className="bd-portal-original">Del, eu preparei um cantinho novo na nossa história. Porque hoje é o seu dia — e você merece ser celebrada.</p>
@@ -77,7 +78,7 @@ export default function BirthdaySurprise() {
               <span className="bd-script-signature">De Leandro, com carinho.</span>
             </div>
           </div>
-          <p className="bd-portal-bottom" aria-hidden="true">UM PRESENTE ESCONDIDO ENTRE ESTRELAS E MEMÓRIAS</p>
+          <p className="bd-portal-bottom" aria-hidden="true">UMA CARTA, ALGUMAS MEMÓRIAS E TODO O MEU CARINHO</p>
         </section>
       ) : (
         <div className="bd-world" id="bd-content">
