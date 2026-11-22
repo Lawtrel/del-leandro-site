@@ -277,7 +277,7 @@
 .bd-ending-note p { margin:1.25rem auto 0; max-width:560px; line-height:1.75; }
 .bd-ending-note p:last-child { font:italic 1.2rem Georgia,serif; color:#f2bed1; }
 
-/* Accessible map;/* Accessible map; maintains a minimum 44px target on every breakpoint. */
+/* Accessible map; maintains a minimum 44px target on every breakpoint. */
 .bd-chapter-nav {
   position:sticky; top:0; z-index:40; background:rgba(14,23,46,.95); backdrop-filter:blur(14px);
   display:flex; align-items:center; justify-content:center; gap:clamp(.7rem,3vw,3rem);
@@ -291,6 +291,36 @@
 }
 .bd-chapter-nav a span { color:#e0c586; font-size:1.2rem; }
 .bd-chapter-nav a:hover { color:#fff; background:#333153; }
+
+/* Shared chapter headings: keep rhythm after removing the photograph album. */
+.bd-section-heading {
+  position: relative;
+  z-index: 2;
+  max-width: 950px;
+  text-align: center;
+  margin: 0 auto clamp(3rem, 6vw, 5rem);
+}
+.bd-chapter-kicker {
+  color: #dbc592;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  line-height: 1.7;
+  margin: 0 0 1rem;
+}
+.bd-section-heading h2 {
+  font-size: clamp(3rem, 6.5vw, 5.8rem);
+  line-height: 1.09;
+  text-wrap: balance;
+  margin: 0;
+}
+.bd-section-heading > p:last-child {
+  color: #dfd9e6;
+  font-size: 1rem;
+  line-height: 1.85;
+  max-width: 620px;
+  margin: 1.3rem auto 0;
+}
 
 /* Chapter I: small hinged doors holding the original four love notes. */
 .bd-secret-section {
