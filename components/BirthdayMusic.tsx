@@ -12,7 +12,7 @@ export default function BirthdayMusic() {
   return (
     <aside className="bd-music-dock" aria-label="Trilha sonora da surpresa">
       {isOpen ? (
-        <div className="bd-music-card">
+        <div className="bd-music-card" id="bd-music-player">
           <div className="bd-music-card-head">
             <div className="bd-music-meta">
               <span className="bd-music-label">NOSSA TRILHA SONORA ♡</span>
@@ -49,6 +49,7 @@ export default function BirthdayMusic() {
         <button
           type="button"
           className="bd-music-trigger"
+          aria-expanded={false}
           onClick={() => setIsOpen(true)}
           aria-label="Ouvir nossa música: Planos, BK' e Luccas Carlos"
         >
