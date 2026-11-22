@@ -329,7 +329,7 @@
   background: radial-gradient(circle at 50% 43%,rgba(78,60,109,.42),transparent 50%),
               linear-gradient(150deg,#0e1630,#262044,#0c142b);
 }
-.bd-ending > :not(.bd-sky) { position:relative; z-index:1; }
+.bd-ending > :not(.bd-sky):not(.bd-ending-heart) { position:relative; z-index:1; }
 .bd-ending-heart { position:absolute; z-index:0; color: rgba(242,168,194,.075); }
 .bd-ending h2 em { color: var(--bd-pink); }
 .bd-ending > p:not(.bd-overline) { color:#dce0ed; }
