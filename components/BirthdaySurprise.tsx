@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { timelinePhotos } from "@/data/timeline-photos";
 import BirthdayMusic from "@/components/BirthdayMusic";
+import Starfall from "@/components/Starfall";
 
 const memories = [
   { photoId: "primeiro-encontro-cafeteria", date: "04 JUL · 2026", label: "Primeiro capítulo", title: "Tudo começou com um café.", text: "Aquele primeiro encontro no Felicità Café. Ainda gosto de pensar em quantas histórias cabiam naquele começo." },
@@ -46,13 +47,16 @@ export default function BirthdaySurprise() {
 
       {!opened ? (
         <section className="bd-intro-gift" aria-labelledby="bd-gift-title">
+          <Starfall />
           <span className="bd-ghost-year" aria-hidden="true">22</span>
           <div className="bd-intro-center">
             <p className="bd-overline bd-overline-light">UMA CARTA, ALGUMAS MEMÓRIAS E TODO O MEU CARINHO</p>
             <div className="bd-gift-ornament" aria-hidden="true">✧ <span>♥</span> ✧</div>
-            <h1 className="bd-display bd-gift-title" id="bd-gift-title">Tem um presente <em>para você.</em></h1>
-            <p className="bd-gift-description">Del, eu preparei um cantinho novo na nossa história. Porque hoje é o seu dia — e você merece ser celebrada.</p>
-            <button className="bd-cta" type="button" id="bd-open" onClick={() => setOpened(true)}>Abrir minha surpresa <span aria-hidden="true">↗</span></button>
+            <p className="bd-gift-kicker">Tem um presente para você.</p>
+            <h1 className="bd-display bd-gift-title" id="bd-gift-title">Feliz aniversário, <em>minha pretinha ❤️</em></h1>
+            <p className="bd-gift-description">Preparei um pequeno mundo só nosso, cheio de lembranças, carinho e coisas que eu queria te dizer.</p>
+            <p className="bd-gift-original">Del, eu preparei um cantinho novo na nossa história. Porque hoje é o seu dia — e você merece ser celebrada.</p>
+            <button className="bd-cta" type="button" id="bd-open" onClick={() => setOpened(true)}>Entrar no nosso mundo mágico <span aria-hidden="true">✨</span></button>
             <p className="bd-gift-signature">De Leandro, com carinho.</p>
           </div>
           <span className="bd-intro-caption" aria-hidden="true">FELIZ ANIVERSÁRIO · 2026</span>
@@ -60,6 +64,7 @@ export default function BirthdaySurprise() {
       ) : (
         <div id="bd-content" className="bd-reveal">
           <section className="bd-hero" aria-labelledby="bd-hero-title">
+            <Starfall />
             <div className="bd-hero-grid">
               <div className="bd-hero-copy">
                 <p className="bd-overline bd-overline-light">PARA MINHA PRETINHA · 22 DE NOVEMBRO</p>
@@ -120,6 +125,7 @@ export default function BirthdaySurprise() {
           </section>
 
           <section className="bd-notes-bg" id="bd-notes" aria-labelledby="bd-notes-title">
+            <Starfall />
             <div className="bd-section">
               <div className="bd-section-head">
                 <div><p className="bd-overline bd-overline-light">02 / PEQUENAS PALAVRAS</p><h2 className="bd-display" id="bd-notes-title">Quatro bilhetes. <em>Um carinho.</em></h2></div>
@@ -129,10 +135,11 @@ export default function BirthdaySurprise() {
                 {notes.map((note, index) => {
                   const isOpen = openedNotes.includes(index);
                   return (
-                    <button type="button" key={note.title} className={"bd-note " + (isOpen ? "bd-note-open" : "")} aria-expanded={isOpen} aria-label={(isOpen ? "Fechar" : "Abrir") + " bilhete " + (index + 1) + ": " + note.title} onClick={() => toggleNote(index)}>
+                    <button type="button" key={note.title} className={"bd-note " + (isOpen ? "bd-note-open" : "")} aria-expanded={isOpen} aria-controls={"bd-note-secret-" + index} aria-label={(isOpen ? "Fechar" : "Abrir") + " bilhete " + (index + 1) + ": " + note.title} onClick={() => toggleNote(index)}>
                       <span className="bd-note-top"><span>{note.label}</span><span className="bd-note-plus" aria-hidden="true">{isOpen ? "−" : "+"}</span></span>
                       <strong className="bd-display">{note.title}</strong>
-                      <span className="bd-note-body">{isOpen ? note.text : "Um pedacinho do que eu sinto, esperando por você."}</span>
+                      <span className="bd-note-body">{isOpen ? "" : "Um pedacinho do que eu sinto, esperando por você."}</span>
+                      <span id={"bd-note-secret-" + index} aria-hidden={!isOpen} className={"bd-note-secret " + (isOpen ? "bd-note-secret-open" : "")}><span>{note.text}</span></span>
                       <span className="bd-note-bottom">{isOpen ? "Fechar bilhete" : "Ler bilhete"} <span aria-hidden="true">↗</span></span>
                     </button>
                   );
@@ -162,6 +169,7 @@ export default function BirthdaySurprise() {
           </section>
 
           <section className="bd-ending" aria-label="Mensagem final">
+            <Starfall />
             <div className="bd-ending-heart" aria-hidden="true">♥</div>
             <p className="bd-overline bd-overline-light">E SE ESTA HISTÓRIA É FEITA DE CAPÍTULOS...</p>
             <h2 className="bd-display">Que o próximo seja <em>lindo para você.</em></h2>
