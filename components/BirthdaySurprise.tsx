@@ -5,24 +5,14 @@ import { useEffect, useRef, useState } from "react";
 import BirthdayMusic from "@/components/BirthdayMusic";
 import EnchantedLandscape from "@/components/EnchantedLandscape";
 import Starfall from "@/components/Starfall";
-import { timelinePhotos } from "@/data/timeline-photos";
 
 /* Preserved word-for-word from the birthday edition in PR #1. */
-const memories = [
-  { photoId: "primeiro-encontro-cafeteria", date: "04 JUL · 2026", label: "Primeiro capítulo", title: "Tudo começou com um café.", text: "Aquele primeiro encontro no Felicità Café. Ainda gosto de pensar em quantas histórias cabiam naquele começo." },
-  { photoId: "milkshake-mr-shake", date: "05 SET · 2026", label: "Pequenas alegrias", title: "A felicidade mora nos detalhes.", text: "Um milkshake, uma conversa e mais uma lembrança que eu gosto de guardar com você." },
-  { photoId: "hamburguer-artesanal", date: "13 SET · 2026", label: "Mais um dia nosso", title: "O simples também vira especial.", text: "Não é só sobre os lugares aonde a gente vai, mas sobre ter você ali para dividir o momento." },
-  { photoId: "foto-de-casal", date: "10 OUT · 2026", label: "Oficialmente nós", title: "E então, nós dois.", text: "Em 4 de outubro decidimos chamar essa história de namoro. Essa foto guarda um pedacinho desse novo capítulo." },
-];
-
 const notes = [
   { label: "01 / Admiração", title: "O que eu admiro em você", text: "Seu carinho, sua força e esse seu jeito intenso de se importar com quem você ama. Você tem uma presença que não passa despercebida." },
   { label: "02 / Memória", title: "Uma lembrança que guardo", text: "Nosso primeiro encontro. Às vezes as coisas que mudam a gente começam com uma conversa e um café." },
   { label: "03 / Desejo", title: "O que desejo para seu novo ciclo", text: "Que não faltem saúde, paz, conquistas e momentos de leveza. Que você encontre muitos motivos para sorrir, inclusive nos dias comuns." },
   { label: "04 / Futuro", title: "O que ainda quero viver", text: "Mais passeios, músicas, conversas tranquilas, risadas espontâneas e pequenas memórias que, com o tempo, viram uma história bonita." },
 ];
-
-const couplePhoto = timelinePhotos.find((photo) => photo.id === "foto-de-casal");
 
 export default function BirthdaySurprise() {
   const [opened, setOpened] = useState(false);
@@ -56,6 +46,8 @@ export default function BirthdaySurprise() {
           <EnchantedLandscape variant="portal" />
           <div className="bd-portal-inner">
             <div className="bd-portal-object" aria-hidden="true">
+              <Image className="bd-portal-moon" src="/aniversario/stitched-moon.svg" width={124} height={124} alt="" aria-hidden="true" />
+              <Image className="bd-portal-key" src="/aniversario/secret-key.svg" width={66} height={124} alt="" aria-hidden="true" />
               <div className="bd-door-stars">✦ <span>✧</span> ✦</div>
               <div className="bd-door-arch">
                 <span className="bd-door-stitch" />
@@ -78,7 +70,7 @@ export default function BirthdaySurprise() {
               <span className="bd-script-signature">De Leandro, com carinho.</span>
             </div>
           </div>
-          <p className="bd-portal-bottom" aria-hidden="true">UMA CARTA, ALGUMAS MEMÓRIAS E TODO O MEU CARINHO</p>
+          <p className="bd-portal-bottom" aria-hidden="true">UMA CARTA, QUATRO BILHETES E TODO O MEU CARINHO</p>
         </section>
       ) : (
         <div className="bd-world" id="bd-content">
@@ -91,74 +83,34 @@ export default function BirthdaySurprise() {
                 <p className="bd-hero-intro">Para a minha pretinha, com todo o meu amor.</p>
                 <h1 className="bd-display bd-hero-title" ref={headingRef} tabIndex={-1} id="bd-hero-title">Hoje o mundo celebra <em>você.</em></h1>
                 <p className="bd-hero-lead">Feliz aniversário, meu bem. Separei algumas lembranças e palavras que queria te entregar de um jeito diferente.</p>
-                <a className="bd-cta" href="#bd-memories">Descobrir nossas lembranças <span aria-hidden="true">↓</span></a>
+                <a className="bd-cta" href="#bd-notes">Abrir os bilhetinhos <span aria-hidden="true">↓</span></a>
                 <p className="bd-hero-handwritten">Feito à mão, em forma de pixels. ♥</p>
               </div>
-              <div className="bd-hero-photo-wrap">
-                <div className="bd-orbit" aria-hidden="true"><span>✧</span><span>✦</span></div>
-                <div className="bd-hero-photo">
-                  {couplePhoto && <Image src={couplePhoto.src} width={couplePhoto.width} height={couplePhoto.height} priority sizes="(max-width: 720px) 78vw, 32vw" alt="Foto real de Del e Leandro juntos em outubro" />}
-                  <span className="bd-hero-photo-corner" aria-hidden="true">✺</span>
-                </div>
-                <span className="bd-photo-date">22 <small>NOV</small></span>
-                <p className="bd-photo-caption">DEL & LEANDRO <span aria-hidden="true">✧</span> NOSSA HISTÓRIA CONTINUA</p>
+              <div className="bd-hero-asset-stage" aria-hidden="true">
+                <span className="bd-asset-orbit bd-asset-orbit-outer" />
+                <span className="bd-asset-orbit bd-asset-orbit-inner" />
+                <span className="bd-asset-glow" />
+                <Image className="bd-asset-moon" src="/aniversario/stitched-moon.svg" width={260} height={260} alt="" priority />
+                <Image className="bd-asset-cat" src="/aniversario/night-cat.svg" width={270} height={300} alt="" priority />
+                <Image className="bd-asset-key" src="/aniversario/secret-key.svg" width={120} height={220} alt="" priority />
+                <span className="bd-asset-star bd-asset-star-one">✧</span>
+                <span className="bd-asset-star bd-asset-star-two">✦</span>
+                <span className="bd-asset-caption">Uma chave, um desejo e quatro segredos.</span>
               </div>
             </div>
           </section>
 
           <nav className="bd-chapter-nav" aria-label="Mapa do nosso mundo">
             <span className="bd-nav-label">MAPA DO NOSSO MUNDO</span>
-            <a href="#bd-memories"><span aria-hidden="true">✿</span> Jardim das memórias</a>
-            <a href="#bd-notes"><span aria-hidden="true">✉</span> Portas secretas</a>
+            <a href="#bd-notes"><span aria-hidden="true">✉</span> Os quatro bilhetes</a>
             <a href="#bd-letter"><span aria-hidden="true">♡</span> A carta especial</a>
           </nav>
-
-          <section className="bd-interlude" aria-label="Dedicatória">
-            <div className="bd-interlude-symbol" aria-hidden="true">✧ <span>♡</span> ✧</div>
-            <p className="bd-interlude-label">UM PRESENTE SOBRE O QUE IMPORTA</p>
-            <p className="bd-display">Existem datas que a gente comemora. <em>E pessoas que a gente celebra.</em></p>
-            <span className="bd-interlude-thread" aria-hidden="true" />
-          </section>
-
-          <section className="bd-memory-section" id="bd-memories" aria-labelledby="bd-memories-title">
-            <div className="bd-section-heading">
-              <p className="bd-chapter-kicker">CAPÍTULO I <span aria-hidden="true">—</span> UM JARDIM DE LEMBRANÇAS</p>
-              <h2 className="bd-display" id="bd-memories-title">Momentos que <em>ficaram.</em></h2>
-              <p>Das primeiras conversas aos pequenos encontros. Algumas fotos carregam muito mais do que conseguem mostrar.</p>
-            </div>
-            <div className="bd-memory-path" aria-hidden="true" />
-            <div className="bd-memory-list">
-              {memories.map((memory, index) => {
-                const photo = timelinePhotos.find((item) => item.id === memory.photoId);
-                if (!photo) return null;
-                return (
-                  <article className={"bd-memory " + (index % 2 ? "bd-memory-alt" : "")} key={memory.photoId}>
-                    <div className="bd-memory-photo">
-                      <div className="bd-memory-media">
-                        <Image src={photo.src} alt={photo.caption} width={photo.width} height={photo.height} sizes="(max-width: 720px) 90vw, 40vw" loading="lazy" />
-                      </div>
-                      <span className="bd-memory-tape" aria-hidden="true" />
-                      <span className="bd-memory-scribble" aria-hidden="true">✧</span>
-                    </div>
-                    <div className="bd-memory-story">
-                      <span className="bd-memory-number" aria-label={"Memória " + (index + 1)}>{String(index + 1).padStart(2, "0")}</span>
-                      <p className="bd-memory-date">{memory.date}</p>
-                      <p className="bd-memory-label">{memory.label}</p>
-                      <h3 className="bd-display">{memory.title}</h3>
-                      <p className="bd-memory-description">{memory.text}</p>
-                      <span className="bd-memory-ending" aria-hidden="true">✧ ─── ♡</span>
-                    </div>
-                  </article>
-                );
-              })}
-            </div>
-          </section>
 
           <section className="bd-secret-section" id="bd-notes" aria-labelledby="bd-notes-title">
             <Starfall />
             <div className="bd-secret-inner">
               <div className="bd-section-heading bd-secret-heading">
-                <p className="bd-chapter-kicker">CAPÍTULO II <span aria-hidden="true">—</span> PORTINHAS SECRETAS</p>
+                <p className="bd-chapter-kicker">CAPÍTULO I <span aria-hidden="true">—</span> PORTINHAS SECRETAS</p>
                 <h2 className="bd-display" id="bd-notes-title">Quatro portas. <em>Quatro carinhozinhos.</em></h2>
                 <p>Cada bilhete guarda uma coisa que eu queria te dizer. Escolha um e toque para abrir.</p>
               </div>
@@ -188,7 +140,7 @@ export default function BirthdaySurprise() {
           <section className="bd-letter-section" id="bd-letter" aria-labelledby="bd-letter-title">
             <div className="bd-letter-stars" aria-hidden="true">✧ &nbsp; ✦ &nbsp; ✧</div>
             <div className="bd-section-heading bd-letter-heading">
-              <p className="bd-chapter-kicker">CAPÍTULO III <span aria-hidden="true">—</span> A CARTA GUARDADA</p>
+              <p className="bd-chapter-kicker">CAPÍTULO II <span aria-hidden="true">—</span> A CARTA GUARDADA</p>
               <h2 className="bd-display">Algumas coisas merecem <em>ser escritas.</em></h2>
             </div>
             <article className="bd-paper">
@@ -208,18 +160,11 @@ export default function BirthdaySurprise() {
             </article>
           </section>
 
-          <section className="bd-farewell" aria-label="Mensagem final de aniversário">
-            <Starfall />
-            <EnchantedLandscape variant="farewell" />
-            <div className="bd-farewell-content">
-              <p className="bd-chapter-kicker">E SE ESTA HISTÓRIA É FEITA DE CAPÍTULOS...</p>
-              <div className="bd-farewell-ornament" aria-hidden="true">✧ ♡ ✧</div>
-              <h2 className="bd-display">Que o próximo seja <em>lindo para você.</em></h2>
-              <p>Feliz aniversário, minha pretinha. Que nunca faltem motivos para sorrir.</p>
-              <span className="bd-farewell-signature">Sempre com carinho, Leandro ♥</span>
-              <a className="bd-farewell-back" href="/">Voltar para o nosso site <span aria-hidden="true">↗</span></a>
-            </div>
-          </section>
+          <div className="bd-ending-note">
+            <span aria-hidden="true">✧ ♡ ✧</span>
+            <p>Feliz aniversário, minha pretinha. Que nunca faltem motivos para sorrir.</p>
+            <p>Sempre com carinho, Leandro ♥</p>
+          </div>
           <footer className="bd-footer"><span>Del & Leandro</span><span>Uma lembrança feita para 22.11.2026</span></footer>
           <BirthdayMusic />
         </div>

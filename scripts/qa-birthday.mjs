@@ -27,18 +27,24 @@ try {
 
     await page.getByRole("button", { name: /Entrar no nosso mundo mágico/ }).click();
     await page.getByRole("heading", { name: /Hoje o mundo celebra/ }).waitFor();
-    if (await page.locator(".bd-memory-media img").count() !== 4) throw new Error("Expected all four original memories");
+    if (await page.locator(".bd-memory-section, .bd-memory-media, .bd-hero-photo").count() !== 0) throw new Error("Photo gallery still rendered");
+    if (await page.locator('img[src*="/photos/"]').count() !== 0) throw new Error("Private photo still rendered");
+    if (await page.locator('.bd-hero-asset-stage img').count() !== 3) throw new Error("Original fantasy assets not rendered");
     if (await page.locator(".bd-note").count() !== 4) throw new Error("Expected all four original notes");
     if (await page.locator(".bd-landscape-garden").count() !== 1) throw new Error("Night-garden illustration missing");
     if (!await page.getByText("Meu bem, hoje eu queria te dar algo que tivesse um pouquinho de nós dois.").isVisible()) {
       throw new Error("Original birthday letter missing");
     }
-    for (const photo of await page.locator(".bd-memory-media img").all()) {
-      await photo.scrollIntoViewIfNeeded();
-      await page.waitForFunction((source) => {
-        const element = [...document.querySelectorAll(".bd-memory-media img")].find((img) => img.getAttribute("src") === source);
-        return element instanceof HTMLImageElement && element.complete && element.naturalWidth > 0;
-      }, await photo.getAttribute("src"));
+    for (const asset of await page.locator(".bd-hero-asset-stage img").all()) {
+      await asset.scrollIntoViewIfNeeded();
+      await asset.evaluate(async (img) => {
+        if (!(img instanceof HTMLImageElement)) throw new Error("Asset is not an image");
+        if (!img.complete) await new Promise((resolve, reject) => {
+          img.addEventListener("load", resolve, { once: true });
+          img.addEventListener("error", reject, { once: true });
+        });
+        if (img.naturalWidth === 0) throw new Error("Original fantasy asset did not load");
+      });
     }
 
     const note = page.locator(".bd-note").first();
@@ -70,7 +76,7 @@ try {
     const focused = await page.evaluate(() => document.activeElement?.tagName);
     if (!focused || focused === "BODY") throw new Error("Keyboard navigation lacks focus at " + width);
     await page.screenshot({ path: "/tmp/birthday-qa-screenshots/" + width + ".png", fullPage: true });
-    console.log("PASS viewport", width, "px; photos, notes, player, motion, focus and overflow");
+    console.log("PASS viewport", width, "px; no photos, 3 original fantasy assets, notes, letter, player, motion, focus and overflow");
     await context.close();
   }
 } finally {
