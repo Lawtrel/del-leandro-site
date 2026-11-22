@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import LoginGate from "@/components/LoginGate";
 import BirthdaySurprise from "@/components/BirthdaySurprise";
 import { ACCESS_COOKIE, verifyAccessToken } from "@/lib/auth";
-import "./birthday.css";
 import "./fantasy.css";
 
 export const metadata: Metadata = {
